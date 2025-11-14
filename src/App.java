@@ -6,14 +6,17 @@ public class App {
         String piña = "\uD83C\uDF4D"; // 🍍
         String cereza = "\uD83C\uDF52"; // 🍒
 
+        // sistema de puntuacion
+        int puntos = 10;
+
         System.out.println("--------------------------------");
         // para poder crear una tragaperras, voy a necesitar los simbolos
-        System.out.println("Los símbolos en la máquina son");
-        System.out.println(limon); 
-        System.out.println(trebol); 
-        System.out.println("7"); 
-        System.out.println(piña); 
-        System.out.println(cereza); 
+        System.out.println("Los conjuntos de símbolos puntuan");
+        System.out.println(limon + "= 3 créditos");
+        System.out.println(trebol + "= 5 créditos");
+        System.out.println("7 = 10 créditos");
+        System.out.println(piña + " = 6 céditos");
+        System.out.println(cereza + "= 2 créditos");
         System.out.println("--------------------------------");
 
         // ya tengo los simbolos ahora tengo que hacer que aleatoriamente se asignen
@@ -24,6 +27,10 @@ public class App {
         boolean jugar = true;
         // inicio bucle principal
         do {
+            if (puntos <= 0) {
+                System.out.println(" \u001B[31m No te quedan créditos para jugar. Perdiste. \u001B[0m");
+                break;
+            }
             int rodillo1 = (int) ((Math.random() * 40) + 1);
             int rodillo2 = (int) ((Math.random() * 40) + 1);
             int rodillo3 = (int) ((Math.random() * 40) + 1);
@@ -74,11 +81,25 @@ public class App {
             // compruebo si ha ganado
             if (icono1.equals("7") && icono2.equals("7") && icono3.equals("7")) {
                 System.out.println("¡Jackpot! ¡Has sacado tres 7!");
+                puntos = +10;
             } else if (icono1.equals(icono2) && icono2.equals(icono3)) {
                 System.out.println("¡Enhorabuena! ¡Has ganado!");
+                if (icono1.equals(limon)) {
+                    puntos = puntos +3;
+                } else if (icono1.equals(trebol)) {
+                    puntos = +5;
+                } else if (icono1.equals(piña)) {
+                    puntos = puntos +6;
+                } else if (icono1.equals(cereza)) {
+                    puntos = puntos +2;
+                }
             } else {
-                System.out.println("Lo siento, has perdido. ¡Inténtalo de nuevo!");
+                System.out.println(" \u001B[32m Lo siento, has perdido. ¡Inténtalo de nuevo! \\u001B[0m");
+                puntos = puntos -1;
             }
+             System.out.println("\u001B[34mCréditos actuales: " + puntos + "\u001B[0m");
+            System.out.println("--------------------------------");
+            System.out.println("--------------------------------");
             System.out.print("""
                     ¿Quieres jugar otra vez?:
                     Sí: pulse 0
@@ -92,5 +113,6 @@ public class App {
             System.out.println("--------------------------------");
 
         } while (jugar);
+        // voy a intentar añadir un sistema de puntuacion
     }
 }
