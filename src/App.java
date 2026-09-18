@@ -1,10 +1,10 @@
 public class App {
     public static void main(String[] args) throws Exception {
         // ejercicio 3 y cosecha propia: tragaperras
-        String limon = "\uD83C\uDF4B"; // 🍋
-        String trebol = "\uD83C\uDF40"; // 🍀
-        String piña = "\uD83C\uDF4D"; // 🍍
-        String cereza = "\uD83C\uDF52"; // 🍒
+        String limon =  "limon"; //"\uD83C\uDF4B";
+        String trebol = "trebol"; //"\uD83C\uDF40"; 
+        String piña = "piña"; //"\uD83C\uDF4D"; 
+        String cereza = "cereza"; // "\uD83C\uDF52"; 
 
         // sistema de puntuacion
         int puntos = 10;
@@ -31,9 +31,9 @@ public class App {
                 System.out.println(" \u001B[31m No te quedan créditos para jugar. Perdiste. \u001B[0m");
                 break;
             }
-            int rodillo1 = (int) ((Math.random() * 40) + 1);
-            int rodillo2 = (int) ((Math.random() * 40) + 1);
-            int rodillo3 = (int) ((Math.random() * 40) + 1);
+            int rodillo1 = (int) ((Math.random() * 50) + 1);
+            int rodillo2 = (int) ((Math.random() * 50) + 1);
+            int rodillo3 = (int) ((Math.random() * 50) + 1);
             String icono1 = "";
             String icono2 = "";
             String icono3 = "";
@@ -94,7 +94,7 @@ public class App {
                     puntos = puntos +2;
                 }
             } else {
-                System.out.println(" \u001B[32m Lo siento, has perdido. ¡Inténtalo de nuevo! \\u001B[0m");
+                System.out.println(" \u001B[32m Lo siento, has perdido. ¡Inténtalo de nuevo! \u001B[0m");
                 puntos = puntos -1;
             }
              System.out.println("\u001B[34mCréditos actuales: " + puntos + "\u001B[0m");
